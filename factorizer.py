@@ -33,14 +33,12 @@ def worker(number):
 def factorize_no_processes(*number, func=worker):
     result = []
     for num in number:
-        # result.append(worker_old(num))
         result.append(func(num))
     return result
 
 
 def factorize_pool(*number, func=worker):
     with Pool(processes=POOL_SIZE) as pool:
-        # result = pool.map(worker_old, number)
         result = pool.map(func, number)
     return result
 
